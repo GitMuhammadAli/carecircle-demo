@@ -16,12 +16,15 @@ A shared care timeline, medication reminders, and an AI that answers questions a
 
 </div>
 
-> ℹ️ Set your live URL in `index.html` (chrome bar) + the badge above.
-
 ---
 
 ## 🎬 Demo
-> Open [`index.html`](./index.html) for the product film (browser-framed, narrated, ~25s).
+
+https://github.com/user-attachments/assets/6d71979f-3f29-43ee-83fe-e43531d3434c
+
+> A narrated product film. ▶ Also runs as an interactive film → [`index.html`](./index.html)
+
+**▶ Live:** **https://care-giving-web.vercel.app**
 
 ## The problem
 Caring for an aging parent means juggling medications, appointments and updates — scattered across texts and sticky notes, with everyone out of sync.
