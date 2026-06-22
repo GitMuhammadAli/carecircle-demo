@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CareCircle — reel</title>
+<style>
+:root{--accent:#f43f5e;--accent-soft:rgba(244,63,94,.14);--bg:#100a0c;--surface:#18101319;--surf:#1a1115;--raised:#231619;--border:rgba(255,255,255,.08);--text:#f5ecee;--muted:#a78f95;--faint:#75595f;--good:#34d399;--f:ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,Menlo,monospace}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--f);font-size:14px;-webkit-font-smoothing:antialiased;overflow:hidden}
+.app{display:grid;grid-template-columns:230px 1fr;height:100vh}
+.side{background:var(--surf);border-right:1px solid var(--border);padding:16px 13px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;margin-bottom:18px}.brand .mk{width:26px;height:26px;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:#2a0810}
+.who{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:6px 4px 10px}
+.member{display:flex;align-items:center;gap:10px;padding:8px 6px}.member .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;color:#2a0810}.member .nm{font-size:13px;font-weight:600}.member .rl{font-size:11px;color:var(--muted)}
+.main{display:grid;grid-template-columns:1.1fr 1fr;min-width:0}
+.col{display:flex;flex-direction:column;min-width:0}
+.col.l{border-right:1px solid var(--border)}
+.ch{height:58px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 22px;font-weight:600}
+.body{flex:1;overflow:auto;padding:20px 22px}
+.tl{position:relative;padding-left:20px}
+.item{position:relative;padding:0 0 18px 14px;border-left:2px solid var(--border)}
+.item::before{content:'';position:absolute;left:-7px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--raised);border:2px solid var(--accent)}
+.item.done::before{background:var(--accent)}
+.item .tm{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.item .ti{font-weight:600;font-size:14px;margin-top:2px}
+.item .by{font-size:12px;color:var(--faint);margin-top:2px}
+.item .chk{color:var(--good);font-weight:700;font-size:12px}
+/* chat */
+.msgs{flex:1;overflow:auto;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.bub{padding:12px 15px;border-radius:15px;font-size:13.5px;line-height:1.5;max-width:90%}
+.bub.in{background:var(--raised);align-self:flex-start;border-bottom-left-radius:5px}
+.bub.out{background:var(--accent);color:#2a0810;align-self:flex-end;border-bottom-right-radius:5px;font-weight:500}
+.src{display:inline-flex;align-items:center;gap:6px;margin-top:9px;font-size:11.5px;background:var(--accent-soft);color:#ff9aab;border-radius:8px;padding:5px 9px}
+.composer{border-top:1px solid var(--border);padding:14px 20px;display:flex;gap:9px}
+.inp{flex:1;background:var(--raised);border:1px solid var(--border);border-radius:11px;padding:11px 14px;font-size:13.5px;min-height:44px;display:flex;align-items:center}.inp .ph{color:var(--faint)}.ic{color:var(--accent)}
+.send{background:var(--accent);color:#2a0810;border-radius:11px;padding:0 15px;display:flex;align-items:center}
+.fade{animation:fade .4s both}@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.cursor{position:fixed;top:0;left:0;width:26px;height:26px;z-index:95;pointer-events:none;opacity:0;transition:transform .85s cubic-bezier(.45,0,.16,1),opacity .35s;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6))}
+.ripple{position:fixed;left:0;top:0;width:40px;height:40px;border-radius:50%;border:2px solid var(--accent);z-index:94;opacity:0;transform:translate(-50%,-50%)}.ripple.go{animation:rip .6s ease-out}@keyframes rip{0%{opacity:.95;transform:translate(-50%,-50%) scale(.25)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)}}
+</style></head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><span class="mk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 14c1.5-1.5 3-3.5 3-5.5A4.5 4.5 0 0 0 12 6 4.5 4.5 0 0 0 2 8.5C2 12 5.5 15 12 20c3-2.3 5.2-4.2 7-6Z"/></svg></span> CareCircle</div>
+    <div class="who">Care circle · Mum</div>
+    <div class="member"><div class="av" style="background:#fda4af">SA</div><div><div class="nm">Sara</div><div class="rl">Primary · you</div></div></div>
+    <div class="member"><div class="av" style="background:#fdba74">OM</div><div><div class="nm">Omar</div><div class="rl">Brother</div></div></div>
+    <div class="member"><div class="av" style="background:#a5b4fc">DR</div><div><div class="nm">Dr. Khan</div><div class="rl">Physician</div></div></div>
+  </aside>
+  <div class="main">
+    <div class="col l"><div class="ch">Care timeline · Today</div>
+      <div class="body"><div class="tl" id="tl"></div></div>
+    </div>
+    <div class="col"><div class="ch">Ask CareCircle</div>
+      <div class="msgs" id="msgs"></div>
+      <div class="composer"><div class="inp" id="inp"><span class="ph" id="ph">Ask about Mum’s care…</span></div><button class="send"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-11 11"/><path d="M22 2 15 22l-4-9-9-4Z"/></svg></button></div>
+    </div>
+  </div>
+</div>
+<div class="cursor" id="cur"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" stroke="#100a0c" stroke-width="1.2" stroke-linejoin="round"><path d="M5 3l14 6.5-6 1.8-1.8 6z"/></svg></div>
+<div class="ripple" id="rip"></div>
+<script>
+const TL=[{tm:"08:00",ti:"Morning medication — 10mg",by:"Confirmed by Sara",done:true,chk:"✓ Taken"},{tm:"11:30",ti:"Physiotherapy session",by:"Logged by Omar",done:true,chk:"✓ Done"},{tm:"15:00",ti:"Dr. Khan — dosage review",by:"Upcoming",done:false},{tm:"19:00",ti:"Evening medication",by:"Reminder set",done:false}];
+const tl=document.getElementById('tl');
+const cur=document.getElementById('cur'),rip=document.getElementById('rip');let cx=innerWidth/2,cy=innerHeight/2;
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function place(){cur.style.transform=`translate(${cx-3}px,${cy-3}px)`}
+function moveTo(el){return new Promise(res=>{if(!el)return res();const r=el.getBoundingClientRect();cx=r.left+r.width*.5;cy=r.top+r.height*.5;place();setTimeout(res,880)})}
+function rippleAt(){rip.style.left=cx+'px';rip.style.top=cy+'px';rip.classList.remove('go');void rip.offsetWidth;rip.classList.add('go')}
+function cap(t){try{parent.postMessage({type:'cap',tx:t},'*')}catch(e){}}
+async function stream(el,text){let s='';for(const w of text.split(' ')){s+=(s?' ':'')+w;el.firstChild.textContent=s;await wait(55)}}
+const Q="What did the doctor say about the new dosage?";
+async function direct(){
+  tl.innerHTML='';document.getElementById('msgs').innerHTML='';document.getElementById('inp').innerHTML='<span class="ph">Ask about Mum’s care…</span>';
+  cur.style.opacity='1';cx=innerWidth*.3;cy=innerHeight*.4;place();
+  await wait(700);
+  cap('Caring for family means juggling meds, appointments and updates.');
+  for(const it of TL){const d=document.createElement('div');d.className='item fade'+(it.done?' done':'');d.innerHTML=`<div class="tm">${it.tm}</div><div class="ti">${it.ti}</div><div class="by">${it.by}</div>${it.chk?`<div class="chk">${it.chk}</div>`:''}`;tl.appendChild(d);await wait(450)}
+  cap('CareCircle keeps everyone on the same page.');
+  await wait(2400);
+  await moveTo(document.getElementById('inp'));rippleAt();await wait(250);
+  const inp=document.getElementById('inp');const ph=document.getElementById('ph');if(ph)ph.remove();let s='';
+  for(const ch of Q){s+=ch;inp.innerHTML=`<span class="ic">${s}</span><span style="opacity:.5">▌</span>`;await wait(38)}inp.innerHTML=`<span class="ic">${s}</span>`;
+  await moveTo(document.querySelector('.send'));rippleAt();await wait(200);
+  const msgs=document.getElementById('msgs');
+  const o=document.createElement('div');o.className='bub out fade';o.textContent=Q;msgs.appendChild(o);
+  await wait(700);
+  const b=document.createElement('div');b.className='bub in fade';b.innerHTML='<span></span>';msgs.appendChild(b);
+  await stream(b,"Dr. Khan increased the morning dose to 10mg, taken with food. Watch for drowsiness in the first week.");
+  const src=document.createElement('div');src.className='src fade';src.innerHTML='📎 Source · care note, Mar 3 · Dr. Khan';b.appendChild(src);
+  msgs.scrollTop=msgs.scrollHeight;
+  cap('Ask anything — answered from your own care notes, with the source.');
+  await wait(3600);
+  cap('');await wait(500);try{parent.postMessage({type:'end'},'*')}catch(e){}
+  await wait(2400);direct();
+}
+setTimeout(direct,500);
+</script>
+</body></html>
