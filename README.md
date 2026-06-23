@@ -22,7 +22,7 @@ A shared care timeline, medication reminders, and an AI that answers questions a
 
 https://github.com/user-attachments/assets/0b04980a-5f86-4058-b150-a3b1ed5ad2d7
 
-> A narrated product film. ▶ Also runs as an interactive film → [`index.html`](./index.html)
+> A cinematic product promo. ▶ Also runs as an interactive film → [`index.html`](./index.html)
 
 **▶ Live:** **https://care-giving-web.vercel.app**
 
